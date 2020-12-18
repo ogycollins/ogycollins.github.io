@@ -1,0 +1,404 @@
+/* Fonts included in folder as they were slow to load via cdn */
+@font-face
+{
+  font-family: "Roboto Slab";
+  src: url(RobotoSlab-Regular.ttf);
+}
+/* asdf */
+@font-face
+{
+  font-family: "Alex Brush";
+  src: url(AlexBrush-Regular.ttf);
+}
+
+/* margin set to 0 to allow 'modal' alert effect reach the edge of the screen.  */
+html, body {
+  margin: 0;
+  /* height: 100%; */
+  background-image: url("bgpizzas.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  scroll-behavior: smooth;  /* scroll smoothly between sections */
+}
+
+/* Show and hide classes to control divs */
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+/* Design choice to center all headings */
+h1, h2, h3 {
+  text-align: center;
+}
+
+
+#pageHeader {
+  width: 100%;
+  padding-top: 2%;
+  color: white;
+  font-family: 'Alex Brush';
+  text-shadow: .125em .125em #B22222;
+}
+
+/* To control font size of h1. Line height to reduce font's built-in padding.  */
+#title {
+  font-size: 7em;
+  margin: 0;
+  display: block;
+  line-height: .9;
+}
+
+#pageHeader h2 {
+  font-size: 4em;
+  margin: 0;
+
+}
+
+/* Login Box */
+#logindiv {
+  width: 16em;
+  margin: auto;
+  margin-top: 2em;
+  padding: 1em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2em;
+  text-shadow: .02em .02em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+/* Design choice to center align most table content */
+#div td {
+  margin: auto;
+  vertical-align: middle;
+  display: block;
+}
+
+
+#logindiv input {
+  font-family: 'Roboto Slab', serif;
+}
+
+/* Align input boxes and apply design font to input field boxes */
+#orderdiv input, #orderdiv select, #checkoutdiv input, #checkoutdiv td #checkoutdiv button, #summarydiv button, #paymentdiv input, #ccformdiv input, #cashdiv input
+{
+  font-family: 'Roboto Slab', serif;
+  margin: auto;
+  vertical-align: middle;
+}
+
+/* to center the table in the div */
+#checkoutdiv table {
+  margin: auto;
+  width: 90%;
+}
+
+/* rem used so that this series of boxes have a consistent width. em resulted in different widths.  */
+#orderdiv {
+  width: 27rem;
+  margin: 3em auto 1em auto;
+  padding: .5em .5em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+
+#orderdiv table{
+  margin: auto;
+  width: 100%;
+}
+
+#orderdiv td, #logindiv td {
+  padding: 1%;
+}
+
+#summarydiv {
+  width: 27rem;
+  margin: .5em auto auto auto ;
+  padding: .5em .5em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.1em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+#checkoutdiv {
+  width: 27rem;
+  margin: 1em auto auto auto;
+  padding: .5em .5em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+
+
+#paymentdiv {
+  width: 27rem;
+  margin: 1em auto auto auto;
+  padding: .5em .5em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+
+}
+
+#paymentdiv table {
+  margin: auto;
+  width: 80%;
+}
+
+#cashdiv {
+  width: 13em;
+  margin: 1em auto auto auto;
+  padding: .5em .5em .5em .5em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+/* match input fields to design font */
+#cashdiv input {
+  font-size: 1.2em;
+}
+
+#confirmationdiv {
+  width: 14em;
+  margin: 2% auto 2% auto ;
+  padding: .5em .5em;
+  text-align: center;
+  font-family: 'Alex Brush';
+  font-size: 3em;
+  text-shadow: .01em .01em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+#ccformdiv {
+  width: 27rem;
+  margin: 1em auto 1em auto;
+  padding: .5em .5em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+#ccformdiv table {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 2%;
+}
+
+/* pad lines in CC form */
+#ccformdiv td {
+  padding: 2%;
+}
+
+
+#ccconfirm {
+  font-size: 1.2em;
+}
+
+
+#discountdiv {
+  width: 27rem;
+  margin: 1em auto 1em auto;
+  text-align: center;
+  padding: .5em .5em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  text-shadow: .03em .03em #B22222;
+  color: white;
+  background-color: rgb(109,106,100, .85);
+  border-radius: .3em;
+}
+
+/* control width of pizza quantity field */
+#pquantity {
+  max-width: 3em;
+}
+
+#orderTable {
+   width: 25em;
+   margin: auto;
+}
+
+/* style 'Total:' text in order summary to differentiate from other cell content */
+#totaltext {
+  font-weight: bold;
+  padding-top: 2em;
+  }
+
+/* Match total alignment with 'Total:' in neighbour cell */
+#total {
+  text-align: right;
+  vertical-align: baseline;
+}
+
+/* Control column widths to avoid fields resizing in a glitchy way */
+#col1 {
+  width: 40%;
+}
+
+#col2 {
+  width: 20%;
+}
+
+#col3 {
+  width: 20%;
+}
+
+#col4 {
+  width: 20%;
+}
+
+/* align columns in order summary to required design */
+.leftcol {
+  text-align: left;
+}
+.centercol {
+  text-align: center;
+}
+
+.rightcol {
+  text-align: right;
+}
+
+.cccol1 {
+  width: 40% ;
+}
+
+.cccol2 {
+  width: 60% ;
+}
+
+#ordercol1 {
+  width: 70%;
+}
+
+#ordercol2 {
+  width: 30%;
+}
+
+#summarydiv h2 {
+  font-family: 'Alex Brush';
+  font-size: 2em;
+  text-shadow: .02em .02em #B22222;
+  margin: 0;
+}
+
+/* standard button styling for page */
+button, input[type=submit], input[type=button] {
+  background-color: #F9423A;
+  border: none;
+  color: white;
+  padding: .5em 2em;
+  text-decoration: none;
+  margin: 1em auto 0em auto;
+  cursor: pointer;
+  display: block;
+  border-radius: .3em;
+}
+
+
+#paymentdiv input {
+  background-color: #F9423A;
+  border: none;
+  color: white;
+  padding: .5em .5em;
+  text-decoration: none;
+  margin: .5em auto .5em auto;
+  cursor: pointer;
+  display: block;
+  border-radius: .3em;
+}
+
+#summarydiv button  {
+  font-size: .8em;
+  margin: .5em auto;
+  padding: 2% 3%;
+}
+
+/* Remove shadow to differentiate cell content */
+#summarydiv td {
+text-shadow: none;
+}
+
+/* size radio buttons */
+input [type=radio] {
+  border: 2em;
+}
+
+#cardProcessing, #finalConfirmation{
+margin: 0;
+}
+
+#pizzapic {
+  border-radius: .3em;
+  width: 60%;
+}
+
+#supersizepizza {
+  width: 50%;
+}
+
+/* Add white overlay when modal appears.  */
+#warningOverlay {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  margin: 0;
+
+}
+
+/* Styling for modal alert */
+#superSizeWarning {
+  margin: 5% auto;
+  width: 50%;
+  background-color: #FFFFCC;
+  border-style: solid;
+  border-width: .2em;
+  border-color: red;
+  padding: 1%;
+  border-radius: 5%;
+  font-family: 'Roboto Slab', serif;
+  text-shadow: .03em .03em #B22222;
+  text-align: center;
+}
+
+#superSizeWarning h1 {
+  font-size: 2.5em;
+}
+
+#returnToLogin {
+  width: 16em;
+  margin: 1em auto;
+  font-family: 'Roboto Slab', serif;
+  text-shadow: .03em .03em #B22222;
+  text-align: center;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jamie's Pizza Place&trade;</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js_external.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!--[if lte IE 9]>
+      <script src="http://css3-mediaqueries-	js.googlecode.com/svn/trunk/css3-	mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="top">  <!-- Used id "top" to allow scrolling to top when needed.  -->
+
+    <!-- Warning Message. Hidden until called.  -->
+    <div id="warningOverlay"> <!-- Modal style warning pop up. Overlay for background. -->
+    <div id="superSizeWarning" >
+      <h1>Healthy Habits Alert!</h1>
+      <div class="message">
+      <img id="supersizepizza" src="supersize.png" alt="This is a big pizza.">
+      <p>Supersize option is <b>2400 calories</b> and should be shared by a minimum of <b>6 people</b></p>
+      </div>
+      <button class="yes">OK</button>
+    </div>
+    </div>
+
+    <!-- Page Header -->
+    <div id="pageHeader">
+      <h2 id="welcome" class="show">Welcome to</h2>
+      <h1 id="title">Jamie's Pizza&trade;</h1>
+    </div>
+
+    <!-- Login Form -->
+    <div id="logindiv" class="show">
+      <form name="loginForm" onsubmit="loginValidate();return false" method="post"> <!-- Return false so form does not reset. -->
+
+        <table>
+          <tr>
+            <td><label for="username">Username:</label></td>
+            <td><input type="text" name="username"/></td>
+          </tr>
+
+          <tr>
+            <td><label for="pw">Password:</label></td>
+            <td><input type="password" name="pw" /></td>
+          </tr>
+        </table>
+
+        <input type="submit" value="Order"/> <!-- Submit button not in table so it can be centered-->
+
+      </form>
+    </div>
+
+    <!-- Order Form -->
+    <div id="orderdiv" class="hide">
+
+      <form name="orderForm" onsubmit="addToOrder();return false;" method="post" >
+
+        <table>
+
+          <tr>
+            <td id="ordercol1"><label for="size">Choose your pie!</label></td>
+            <td id="ordercol2"><select name="size" id="pizzasize" onchange="superSelect()"> <!-- Warning triggered via jquery -->
+              <option value="Large">Large &euro;5 </option>
+              <option value="Extra-Large">Extra-Large	&euro;7</option>
+              <option value="Supersize">Supersize &euro;17 </option>
+            </select></td>
+          </tr>
+
+          <tr>
+            <td><label for="pquantity">How many pizzas would you like?</label></td>
+            <td><input type="number" name="pquantity" id="pquantity" min="1" /></td>
+          </tr>
+        </table>
+        <input type="submit" value="Add To Order"/>
+
+      </form>
+    </div>
+
+    <!-- Confirmation Page (Hidden until end) -->
+    <div id="confirmationdiv" class="hide">
+      <p id="cardProcessing" class="hide">Payment details sent for processing.</p>
+      <p id="finalConfirmation" >Your order is on its way. <br/> <img id="pizzapic" src="pizza.jpg" alt=""> <br/>Thanks for ordering Jamie's Pizza&trade;.</p>
+    </div>
+
+    <!-- Order Summary -->
+    <div id="summarydiv" class="hide">
+      <h2>Your order:</h2>
+      <table id="orderTable">
+        <th id="col1" class="leftcol">Pizza</th>
+        <th id="col2" class="centercol">Quantity</th>
+        <th id="col3" class="rightcol">Price</th>
+        <th id="col4" class="rightcol"></th>
+
+        <tr id="total">
+          <td></td>
+          <td id="totaltext">Total:</td>
+          <td id="totalcell"></td>
+          <td></td>
+        </tr>
+      </table>
+      <button id="checkoutButton" type="button" onclick="checkout();return false;">Proceed To Payment</button>
+    </div>
+
+    <!-- Checkout Form that allows discount to be applied -->
+    <div id="checkoutdiv" class="hide">
+
+      <form name="checkoutForm" onsubmit="discountCheck();return false;" >
+
+        <table id="discountTable">
+          <tr>
+            <td><label for="discount">Promo Code:</label></td>
+            <td><input type="text" name="discount"/></td>
+            <td> <input id="applydiscountbutton" type="submit" name="discountapply" value="Apply Discount"> </td>
+          </tr>
+        </table>
+
+      </form>
+
+    </div>
+
+    <!-- Discount Applied Message. Different div to control visibility -->
+    <div id="discountdiv" class="hide">
+      <p id="discountAppliedMessage">10% Discount has been applied. <br/>Only one discount allowed per order. </p>
+    </div>
+
+    <!-- Payment Choice Form -->
+    <div id="paymentdiv" class="hide">
+
+      <form id="paymentChoice" method="post" >
+
+        <table>
+          <tr>
+            <td><input type="radio" id="cash" name="paymentChoice" value="cash" onclick="hideCCPayment()" checked></td> <!-- Cash checked by default -->
+            <td ><label for="cash">Cash On Delivery</label></td>
+            <td><input type="radio" id="card" name="paymentChoice" value="card" onclick="showCCPayment()"></td>
+            <td><label for="card">Pay By Card</label></td>
+          </tr>
+        </table>
+
+      </form>
+
+      <input type="button" onclick="backToOrder();return false;" value="Back To Order">
+
+    </div>
+
+    <!-- 1st Confirm Order Button for cash sales -->
+    <div id="cashdiv" class="hide">
+          <input type="button" value="Confirm Order" onclick="confirmation();return false;">
+    </div>
+
+    <!-- CC Payment Form -->
+    <div> <!-- Container div as body margin is '0' to avoid margin collapse.  -->
+
+      <div id="ccformdiv" class="hide" >
+
+        <form name="ccForm" method="post" onsubmit="ccValidation();return false;" >
+
+          <table>
+              <tr>
+                <td class="cccol1"><label for="ccName">Name On Card:</label></td>
+                <td class="cccol2"><input type="text" name="ccName"></td>
+              </tr>
+
+              <tr>
+                <td><label for="ccNumber">Card Number:</label></td>
+                <td><input type="number" name="ccNumber" min="111111111111"></td> <!-- Min number chosen as CCs at least 12 digits long -->
+              </tr>
+
+              <tr>
+                <td><label for="expiryDate">Expiry:</label></td>
+                <td><input type="month" id="expiryDate" name="expiryDate"></td>
+              </tr>
+
+              <tr>
+                <td><label for="cvv">CVV:</label></td>
+                <td><input type="number" name="cvv" ></td>
+              </tr>
+
+          </table>
+
+          <input id="ccconfirm" type="submit" value="Confirm Order"> <!-- 2nd Confirm Order Button for CC orders -->
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <div> <!-- Button in a div as body margin is 0. Avoids margin collapse. -->
+
+      <button id="returnToLogin" type="button" name="button" onclick="window.location.reload()" class="hide" >Return To Login Screen</button>
+
+    </div>
+
+  </body>
+
+</html>
